@@ -14,7 +14,7 @@ String statusObjek;
 void setup() {
   size(1200, 700);
   smooth();
-  String portName = Serial.list()[0]; // Ganti jika perlu
+ String portName = "COM6";
   myPort = new Serial(this, portName, 9600);
   myPort.bufferUntil('.');
 }
@@ -101,7 +101,6 @@ void drawObject() {
   float x = pixsDistance * cos(radians(iAngle));
   float y = pixsDistance * sin(radians(iAngle));
   point(x, y);
-
   popMatrix();
 }
 
