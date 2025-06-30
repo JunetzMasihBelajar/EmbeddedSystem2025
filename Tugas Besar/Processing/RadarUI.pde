@@ -5,7 +5,7 @@ Serial myPort;
 
 String data = "";
 String angle = "";
-String distance = "";
+String distance = "";  
 int iAngle = 0, iDistance = 0;
 
 float pixsDistance;
@@ -87,7 +87,11 @@ void drawLine() {
 void drawObject() {
   if (iDistance > 400) return;
 
+  // Konversi jarak dari cm ke pixel (0-40 cm → 0-300 px)
   pixsDistance = map(iDistance, 0, 40, 0, 300);
+
+  // Jangan gambar jika sudah melebihi radius radar (300 pixel)
+  if (pixsDistance > 300) return;
 
   pushMatrix();
   translate(width/2, height/2);
@@ -100,6 +104,7 @@ void drawObject() {
 
   popMatrix();
 }
+
 
 void drawText() {
   fill(0);
